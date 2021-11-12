@@ -3,6 +3,7 @@ package lu.davidson.market.controller;
 
 import lu.davidson.market.json.Price;
 import lu.davidson.market.service.ExchangeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -11,11 +12,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/tools/converter")
 public class ConverterController {
 
-    private final ExchangeService exchangeService;
 
-    public ConverterController(ExchangeService exchangeService) {
-        this.exchangeService = exchangeService;
-    }
+    @Autowired
+    private ExchangeService exchangeService;
 
     @GetMapping("/amount")
     public Price convertPrice(@RequestParam("amount") double amount,
